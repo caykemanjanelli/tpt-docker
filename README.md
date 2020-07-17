@@ -6,7 +6,8 @@
 
 #### TECNOLOGIAS ENVOLVIDAS
 
-- Docker
+- GIT: ([Download](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git))
+- Docker: ([Download](https://docs.docker.com/engine/install/ubuntu/))
 
 ### Baixando o Projeto
 
@@ -18,7 +19,7 @@ $ git clone git@github.com:caykemanjanelli/tpt-docker.git
 
 **Setup para Build** 
 
-Em um ambiente que possua **docker**, executar os comandos abaixo para preparar um ambiente e subir o container
+Em um ambiente que possua **docker**, executar os comandos abaixo para preparar um ambiente e subir o container.
 ```sh
 $ cd tpt-docker/
 $ docker container run -it --rm -v ${PWD}:/root registry.access.redhat.com/rhel7/rhel bash
