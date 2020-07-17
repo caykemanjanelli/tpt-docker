@@ -1,0 +1,48 @@
+Copyright 2020, Teradata.  All rights reserved.
+
+Description:
+
+Enhancement and problem fixed by this release are listed below:
+
+Teradata kafkaaxsmod 17.00.00.002
+=================================
+SA-52478
+   Use latest version of LIBRDKAFKA
+
+Teradata kafkaaxsmod 17.00.00.001
+=================================
+SA-52130
+   Build KafkaAxsmod with VS2019 compiler on Windows platform
+SA-52146
+   KafkaAxsmod source code migration from Clearcase to GitHub
+SA-51516
+   [ Install ] Update the component code in all TTU MSI projects
+
+Teradata kafkaaxsmod 17.00.00.000
+=================================
+SA-51502
+   Abstract: Kafka Access Module core dumps.
+SA-50663
+   Abstract: Storing the offset of messages in a kafka broker
+SA-51611
+   Abstract: S3,Azure and Kafka shouldn't work with 64-bit SA products.
+   
+Installation Instructions:
+
+1. kafkaaxsmod1700__linux_x8664.17.00.00.02-1.tar.gz is a compressed TARed file that
+   contains the Teradata Kafka Access Module package.
+
+2. It is not necessary to remove the existing version of
+   Teradata Kafka Access Module on the system.
+
+3. Log on to Linux system as root user.
+
+4. Uncompress the kafkaaxsmod1700__linux_x8664.17.00.00.02-1.tar.gz file as follows:
+
+   # gunzip -c kafkaaxsmod1700__linux_x8664.17.00.00.02-1.tar.gz | tar xvf -
+
+5. Install the software as follows:
+
+   # cd kafkaaxsmod1700
+   # rpm -Uvh --force --nodeps kafkaaxsmod1700-17.00.00.02-1.x86_64.rpm
+

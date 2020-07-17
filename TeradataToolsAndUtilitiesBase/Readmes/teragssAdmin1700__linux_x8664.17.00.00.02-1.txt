@@ -1,0 +1,283 @@
+
+
+
+#       Copyright 2016-2020, Teradata Corporation.  All rights reserved.
+#ident  "$id$"
+
+1.  Fix notes
+
+Problems fixed by this release are listed below (latest at the top):
+
+------------------------------TD17.0 teragssAdmin DRs-------------------------------
+************************************************************************************
+***************************** 17.00.00.02 created 01/02/20  ************************
+************************************************************************************
+DR 193434 Priority 2
+	Build TeraGSS on all TTU supported platforms on new build servers with 17.0 build tools
+DR 193456 Priority 2 
+	Fix coverity defect : Dereference before null check - CID 104982
+DR 192807 Priority 2
+	Modify Config Spec Template to use OpenSSL 1.1.1c
+DR 192792 Priority 2
+	Update TDGSS to use OpenSSL 1.1.1c
+DR 191489 Priority 2
+	tdgssfixpaths tool hangs when more than one version of kerberos client package is installed
+DR 192649 Priority 2
+	TGSS Proxy mechanism has small memory leak
+DR 192754 Priority 2
+	TDGSS: TD17.0 : Package tdgss.mml for error documentation
+DR 192589 Priority 2
+	Gateway crashes during SPNEGO logons when there is the time stamp mismatch between the authenticating server and client
+DR 192295 Priority 2
+	Teradata Binaries should be owned by root:root
+	
+************************************************************************************
+***************************** 17.00.00.01 created 02/01/19  ************************
+************************************************************************************
+	
+DR 189630 Priority 2
+	Change config spec for Xerces-C 3.2.1
+DR 190056 Priority 2
+	RPM spec files of all TTU products need to be updated to make sure there are no
+	violations of packaging standards recommended/set by RPM.
+	
+	TeraGSSAdmin package attempts to own the /opt directory (in the %files section),
+	which is a violation of packaging standards set by Fedora because directories
+	like /opt should be owned by the filesystem package. No other package should be
+	making claims to such system directories ideally.
+DR 191079 Priority 2
+	TeragssAdmin has combined packaging and since it needs to be split into 32-bit and 
+	64-bit packages.
+DR 191124 Priority 2
+	Files in etc should have permissions r--r-----. 
+	Files in bin and lib should have r-xr-x---.
+DR 191143 Priority 2
+	When encryption is enabled at server side load jobs were taking more time during 
+	execution.
+DR 191168 Priority 2
+	Change config spec for Openssl to 1.0.2p
+DR 191244 Priority 2
+	Registry entries are not removed during multiversion of TeragssAdmin for 16.20 and 
+	17.00 versions.
+DR 191391 Priority 3
+	No symptoms. The logging feature is only active during internal debugging and integration.
+DR 191523 Priority 2
+	Our build-time sanity tests get a bus error (SIGBUS) in the TD2 wrap/unwrap tests.
+
+************************************************************************************
+***************************** 17.00.00.00 created 12/03/18  ************************
+************************************************************************************
+	
+DR 124753 Priority 3
+	No customer visible symptoms.
+	
+	However, our check-in tool does not update many of our copyright notices properly.  Since we 
+	don't know what tool customizations will happen under GIT, it's important to get this fixed 
+	ASAP before we actually do the GIT migration.
+DR 177819 Priority 3
+	CPAI: After reconfig all-AMP access (i.e., not on PA column of CPPA table) has Failure 2860
+DR 178535 Priority 2
+	The difficulties during USD development and integration/testing with Client 
+	has pointed up a serious lack of supportability hooks that leave TDGSS 
+	lacking. The Logging APIs provide a way to provide a hook or callback 
+	functions to Teradata internal departments (such as Client and Unity) to 
+	capture TDGSS/TeraGSS internal built-in logging information during integrating 
+	and testing with TDGSS/TeraGSS libraries.
+DR 180923 Priority 2
+	When customers/DBAs enforce password expiration on LDAP service account, they 
+	need to restart database. The database restart affects all existing LDAP 
+	logons.
+DR 189258 Priority 3
+	TDGSS dynamically linking to routines that link to its cryptographically 
+	secure random number generator caused conflicts with the shared library link 
+	that the Gateway started using in a new feature.  This problem was resolved 
+	before release, and is not customer visible.
+DR 189630 Priority 2
+	Change config spec for Xerces-C 3.2.1
+DR 189849 Priority 3
+	Bus error occurred while testing KRB5 mechanism against a Linux server or a 
+	Linux middle server on Solaris-Sparc with ldapclient.
+DR 189953 Priority 2
+	We will have dotnet core ruuning on mac and linux os. For this we need to add 
+	code in tdgss to support.
+DR 189958 Priority 3
+	No customer-visible symptoms
+DR 190191 Priority 2
+	Support to use JWT as a credential was not there in TDNEGO.
+DR 190369 Priority 3
+	Internal demos and not visible to customers
+DR 190647 Priority 3
+	Prior to the updates detailed by this DR, TDNEGO was unable to delegate a 
+	credential without modifying the existing TDGSS user configuration file. 
+	
+	The code changes to the configuration files will now allow delegation by
+	default, without intervention by the user.
+DR 190662 Priority 3
+	This is an internal demo that is never touched by customers.
+DR 190938 Priority 2
+	TeraGSS build on Linux platforms failed immediately. 
+DR 190940 Priority 2
+	After upgraded the TTU software from 13.10 to 16.20, the client applications 
+	such as BTEQ is not connecting through QD 13.10, even though all the instructions 
+	were followed to make necessary changes. 
+DR 190991 Priority 3
+	No symptoms.  Internal source code correction in a pre-GCA version.
+DR 191066 Priority 3
+	Coverity shows three issues in the Pathtest Unit Test Tool.
+	
+	
+2.  Install notes
+---------------------------------------------------------------------------------------------------------------
+
+Install procedures for all Client TeraGSS and Server TDGSS platforms.
+--------------------------------- INSTALL NOTES ---------------------------------------------------------------
+
+
+The following install procedures are for all Supported Client TeraGSS and
+Server TDGSS platforms.  
+
+The 16.10 and later releases no longer supports an independent TeraGSS package for client machines. Instead, 
+the client interfaces embed TeraGSS functionality and the previous method of configuring TeraGSS is not
+possible. If you need to configure TeraGSS, you must install the Teradata Generic Security Service
+Administrative package (teragssAdmin) included in TTU.
+
+NOTE: Although teragssAdmin is provided for configuring TeraGSS, Teradata recommends not configuring
+TeraGSS on the client systems.
+Please see end of this readme file for additional configuration notes.
+
+***************************************************************************************************************
+
+Client TeraGSS (teragssAdmin):
+
+* All Aix-Power Platforms
+* All Linux Platforms
+* All Solaris Platforms
+* All Windows Platforms
+
+***************************************************************************************************************
+
+AIX
+***************************************************************************************************************
+
+*NOTE teragssAdmin is included in the TTU 17.00 release
+
+1.  uncompress the teragssAdmin_platform_release.tar.gz file
+    "gunzip teragssAdminxxxx_aix_power.xx.xx.xx.xx.tar.gz"
+
+2.  Install as follows
+	"installp -acXd teragssAdminxxx.bff all" for aix-power/aix-power.32
+
+
+
+***************************************************************************************************************
+	
+Linux
+***************************************************************************************************************
+	
+*NOTE teragssAdmin is included in the TTU 17.00 release
+17.00 teragssAdmin is only available as 64bit package.  
+
+1.  uncompress the teragssAdminxxxx__linux_x8664.xx.xx.xx.xx-1.tar.gz file
+    "gunzip -c teragssAdminxxxx_linux_x8664.xx.xx.xx.xx-1.tar.gz | tar xof -" for Suselinux
+	
+
+2.  Install as follows
+    "rpm -i teragssAdminxxxx-xx.xx.xx.xx-1.x84_64.rpm" for Suselinux
+	
+
+
+***************************************************************************************************************
+
+Solaris
+***************************************************************************************************************
+
+*NOTE teragssAdmin is included in the TTU 17.00 release
+
+1.  uncompress the teragssAdminxxxx__solaris_x64.xx.xx.xx.xx.tar.gz file for Solaris Opteron platform
+    "gunzip -c teragssAdminxxxx__solaris_x64.xx.xx.xx.xx.tar.gz | tar xof -" for Solaris Opteron
+	"gunzip -c teragssAdminxxxx__solaris_sparc.xx.xx.xx.xx.tar.gz | tar xof -" for Solaris Sparc
+
+2.  Install as follows
+    "pkgadd -d `pwd` teragssAdminxxxx" for Solaris-x8664/i386 & Solaris-sparc64/32
+
+
+***************************************************************************************************************
+
+Windows
+***************************************************************************************************************
+
+NOTE: teragssAdmin is part of the TTU 17.00 release
+How to install this package on all supported Windows Platforms:
+
+1.  Run the self-extracting executable
+
+2.  Extract the files to a folder
+
+4.  Run the setup.exe from the extracted folder
+
+5.  Follow the instructions to complete the install
+
+
+***************************************************************************************************************
+
+*ADDITIONAL NOTES:
+TeraGSS Limitations
+
+The following lists the limitations in TeraGSS:
+# There is no LDAP server-side support in TTU 17.00 and later. Configuring LDAP properties in the
+  LDAP mechanism or configuring an <LdapConfig> section can no longer be done.
+# There is no client side support for the SPNEGO mechanism in TTU. This mechanism is present only in
+  TDGSS to support the Teradata .NET Data Provider. So, you cannot configure SPNEGO using
+      teragssAdmin on the client.
+# There is no support for the PROXY mechanism in TTU. This mechanism is present only in TDGSS to
+  support Unity. Unity now uses TDGSS rather than TeraGSS. See the Unity documentation set for more
+      information on configuring and managing PROXY: Teradata Unity Installation, Configuration, and
+      Upgrade Guide for Customers (B035-2523) and Teradata Unity User Guide (B035-2520).
+# TTU now provides configuration to set the preferred default TeraGSS authentication mechanism on a
+  per-client machine basis. While setting the default mechanism is still possible with TeraGSS, the
+  preferred method is to configure TTU rather than TeraGSS. See the Teradata Tools and Utilities
+  documentation for more information.
+# The TD1, NTLM, NTLMC, and KRB5C compatibility mechanisms are deprecated and have been
+  removed.
+
+Guidelines for Configuring TeraGSS
+The process for configuring TeraGSS and TDGSS is similar, so information about configuring TDGSS from
+other parts of this book can be used as a guide.
+
+Ensure that the teragssAdmin package has been installed on the client machine. If it is not present, install it
+from the appropriate TTU package. This package is installed in the 17.00 TTU directory structure. The tools
+required to manage and debug a TeraGSS configuration are in the TTU bin directory. The supporting XML
+files and XSD schema are in the TTU etc directory.
+
+If you already have a copy of the TdgssUserConfigFile.xml file in your TTU site directory, you may continue
+to use that file. If TdgssUserConfigFile.xml is configured for the deprecated mechanisms (see the list of
+limitations above) or contains configuration for PROXY and SPNEGO, those configurations must be
+removed. The only configurations that should remain are configurations for the TD2, LDAP, KRB5 and
+TDNEGO mechanisms.
+
+If you do not have a copy of the TdgssUserConfigFile.xml file in your TTU site directory, you may copy the
+one in the TTU etc directory to the site directory and make edits to the copy.
+Once your edits are complete, execute the run_tdgssconfig script found in the TTU bin directory. This script
+will compile the changes you made to the TdgssUserConfigFile.xml file into the tdgssconfig.bin file located
+in the TTU etc directory.
+
+
+        The following mechanism attributes and elements are configurable in TeraGSS, following the editing
+        instructions found in other sections of this document:
+
+        # DefaultMechanism # Note that the preferred method of picking a per-client machine specific default
+          mechanism is to configure it through TTU installation and configuration. We recommend that this
+          attribute is set to no for all mechanisms in TeraGSS.
+        # DefaultNegotiatingMechanism
+        # MechanismEnabled
+    # <MechQop> elements may be adjusted and managed if defaults are not good enough.
+        # MechanismRank
+        # <NegotiatedMechanism>
+        # One or more <RequiredLibraryPath> elements may be added to the KRB5 mechanism to specify the
+          location of a libgssapi_krb5.so library when this library resides in a non-standard location. 
+		  Alternatively, the TDGSS_KRB5_KRB5LIB environment variable may be set to the location of the library if you wish to
+          avoid modifying the TeraGSS configuration. Absolute paths are required in both the
+          <RequiredLibraryPath> element and the environment variable.
+
+
+

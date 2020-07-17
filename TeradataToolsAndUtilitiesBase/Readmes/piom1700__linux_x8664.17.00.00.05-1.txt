@@ -1,0 +1,103 @@
+Copyright 2020, Teradata Corporation.  All rights reserved.
+
+Description:
+
+Enhancement and problem fixed by this release are listed below:
+
+Teradata piom 17.00.00.005
+==========================
+
+SA-52536
+   Abstract: Fix issues reported by Coverity on PIOM codebase
+SA-52533
+   Abstract: Merge/Sync Access Module Header Files From TPT DC
+SA-52217
+   Abstract: Certify Dataconnector on Windows Server 2019
+SA-51939
+   Abstract: Certify Dataconnector on MAC OS/X 10.14
+SA-51941
+   Abstract: Certify on new platform Oracle Enterprise Linux 8
+SA-51942
+   Abstract: Certify on new platform Centos 8
+SA-52252
+   Abstract: Certify Dataconnector on RedHat 8
+SA-52346
+   Abstract: Certify DataConnector on MACOS 10.15
+
+Teradata piom 17.00.00.004
+==========================
+
+SA-52379
+   Abstract: Build Dataconnector with new toolset on solaris-sparc
+SA-52279
+   Abstract: Build Dataconnector with new toolset on solaris-opetron
+
+Teradata piom 17.00.00.003
+==========================
+
+SA-52070
+   Abstract: Build PIOM with Xcode 10.2.1 compiler on Mac OS
+
+Teradata piom 17.00.00.002
+==========================
+
+SA-51517
+   Abstract: Linux: Add dependency aaa_base to support installing on a 
+             pristine system
+SA-51944
+   Abstract: Parsing issue with multi byte charset data when delimiter
+             char is part of the multi byte char.
+SA-52069
+   Abstract: Build PIOM with VS2019 compiler on Windows platform
+SA-52070
+   Abstract: Build PIOM with Xcode 10.2.1 compiler on Mac OS
+
+
+Teradata piom 17.00.00.001
+==========================
+
+SA-51522
+   Abstract: Fix the misleading error message of PIOM for invalid lengths
+SA-51637
+   Abstract: Create OTBE-less makefile for FastLoad, MultiLoad, FastExport,
+             TPump and PIOM
+SA-51794
+   Abstract: DataConnector source code migration from Clearcase to GitHub
+SA-51725
+   Abstract: Sync SA DC headers with TPT DC for TPT-33286 changes
+
+
+Teradata piom 17.00.00.000
+==========================
+
+SA-51031
+   Abstract: Port Data Connector to native 64-bit
+SA-51367
+   Abstract: [ Install ] separate 32-bit and 64-bit packages creation for
+             SA and piom on Linux platform
+SA-51493
+   Abstract: [ Install ] PIOM 64bit packaging changes
+SA-51516
+   Abstract: [ Install ] Update the component code in all TTU MSI projects
+*****************************************************************************
+Platform Support: Linux
+
+Software Requirement: None
+
+No need to remove previous version of Teradata Data Connector API.
+*****************************************************************************
+Installation Instructions:
+
+1. piom1700__linux_x8664.17.00.00.05-1.tar.gz is a compressed TARed file that
+   contains Teradata Data Connector 17.00.00.05 package.
+
+2. Log on to Linux system as root user.
+
+3. Uncompress the piom1700__linux_x8664.17.00.00.05-1.tar.gz file as follows:
+
+   # gunzip -c piom1700__linux_x8664.17.00.00.05-1.tar.gz | tar xvf -
+
+4. Install the software as follows:
+
+   # cd piom1700
+   # rpm -Uvh --force --nodeps piom1700-17.00.00.05-1.x86_64.rpm

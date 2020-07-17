@@ -1,0 +1,160 @@
+Copyright 2020, Teradata Corporation.  All rights reserved.
+
+Description:
+
+Enhancement and problem fixed by this release are listed below:
+
+Teradata jmsaxsmod 17.00.00.004
+==============================
+
+SA-52476
+   Abstract:  Build MQ,NP and JMS AccessModules with Solaris 
+              Studio 12.6 on Solaris platform      
+SA-52477
+   Abstract: [ Install ] Add 64-bit pkgs of MQ,NP and MQ AccessModules 
+             on Solaris and Aix platforms
+SA-51965
+   Abstract: Provide the "FollowTheMaster" feature in AccessModuleJMS.
+
+Teradata jmsaxsmod 17.00.00.003
+===============================
+SA-52341
+   Abstract: AWS Linux: /usr/bin/ksh needed for axsmod
+   
+Teradata jmsaxsmod 17.00.00.002
+===============================
+SA-51943
+   Abstract: Provide differed mode capability in JMS Axsmod
+             to create and pass LOB's to DC
+ SA-50629
+   Abstract: SSL intergaration with TIBCO is not working
+SA-51972
+   Abstract: JMSAXSMOD not retaining checkpoint and logfile after
+              failure
+SA-52144
+   Abstract: JMSAXSMOD source code migration from Clearcase to GitHub
+   
+Teradata jmsaxsmod 17.00.00.000
+==============================
+
+SA-50999
+   Abstract: Dataconnector and Axsmod's need to support any length
+              access module init string
+SA-51516
+   Abstract:[ Install ] Update the component code in all TTU MSI projects
+SA-51521
+   Abstract:[ Install ] Update the Linux packaging script to use the product’s
+            build bundle from Artifactory
+SA-51494
+   Abstract:[ Install ] Split the Linux package into 32-bit and 64-bit
+SA-51055
+   Abstract: Make AccessModuleJMS to compatible with Apache Active MQ and 
+             RedHat JBOSS Active MQ servers
+SA-51628
+   Abstract: JMSAxsmod export job coredumps when exporting zero rows to JMS 
+SA-51055
+   Abstract: Fix the JMS readme file provided to customers 
+jmsaxsmod1700__linux_x8664.17.00.00.04-1.tar.gz is a compressed TARed  RPM file that
+contains the Teradata Access Module for JMS 17.00.00.04 package.
+*****************************************************************************
+Platform Support: Linux
+
+Software Requirement:
+  o JDK Version: JDK1.4 or above
+  o JMS Enable Messaging system: IBM WebSphere MQ or BEA WebLogic JMS (both
+    with JMS Version 1.1)
+
+No need to remove previous version of Teradata Access Module for JMS.
+
+*****************************************************************************
+How to install this efix:
+
+1.     Log on to Linux system as root user.
+
+2.     Uncompress the tar.gz file as followed:
+
+       # gunzip -c <tar.gz file> | tar xvf -
+
+       where <tar.gz file> is the compressed TARed file.
+
+3.     Install the software as followed:
+
+       # rpm -Uvh --force --nodeps <rpm file>
+
+       where <rpm file> is the Teradata Access Module for JMS RPM file.
+
+Missing Dependent Libraries
+
+The JMS rpm depends on libjvm.so library being installed. 
+The libjvm.so is provided in the java opensdk rpm ( e.g., for centos - java-1.6.0-openjdk-1.6.0.41-1.13.13.1.el6_8.x86_64.rpm). 
+Download the java opensdk rpm for your flavor of Linux and please use zypper or yum to install the package 
+because it depends on a lot of other packages which will be taken care of the zypper or yum.
+
+
+*****************************************************************************
+Loading JMSAM:
+
+To load JMSAM, set environment variables that are specific to the JMS-compliant message bus providers and Java runtime environment.
+
+These are shown below by configuration:
+
+Unix Configuration
+
+1. Set local variables JAVA_HOME, JAVA_LIB, MQ_JARS.
+
+	Set JAVA_HOME to J2SE SDK installation directory.
+	Set JAVA_LIB to Java runtime environment library.
+	Set MQ_JARS to directory containing JMS-compliant message bus provider's .jar files
+
+Application Server specific jar files are:
+	IBM WebSphere MQ: jms.jar, jndi.jar, provider.jar,fscontext.jar,  connector.jar, com.ibm.mq.jar, com.ibm.mqjms.jar, jta.jar
+
+	BEA WebLogic: weblogic.jar
+
+
+For Example
+
+JAVA_HOME=/usr/java (Solaris)
+JAVA_HOME=/opt/java1.4 (HP-UX)
+
+JAVA_LIB=$JAVA_HOME/jre/lib/sparc (Solaris)
+JAVA_LIB=$JAVA_HOME/jre/lib/PA_RISC2.0 (HP-UX)
+
+MQ_JAVA=/opt/mqm/java/lib
+MQ_JARS=$MQ_JAVA/jms.jar:$MQ_JAVA/jndi.jar:$MQ_JAVA/providerutil.jar:
+$MQ_JAVA/fscontext.jar:$MQ_JAVA/connector.jar:$MQ_JAVA/com.ibm.mq.jar:
+$MQ_JAVA/com.ibm.mqjms.jar:$MQ_JAVA/jta.jar
+
+
+2. Set CLASSPATH to the directory containing:
+
+	jmsam_charsets.properties
+	jmsam.jar
+	any JMS-complient messaging library classes
+
+
+For Example
+
+JMSAM_CLASSPATH=/opt/teradata/client/jmsaxsmod:/opt/teradata/client/jmsaxsmod/jmsam.jar
+export CLASSPATH=$JMSAM_CLASSPATH:$MQ_JARS:$CLASSPATH
+
+3. Set LD_LIBRARY_PATH to the directory containing:
+
+	libjvm.so
+	libjva.so 
+	libverify.so
+	libhpi.so
+
+For Example
+
+export   LD_LIBRARY_PATH=$JAVA_LIB:$JAVA_LIB/server:$JAVA_LIB/native_threads:
+                                           $LD_LIBRARY_PATH
+
+4. For HP-UX PA-RISC and JDK 1.4 version only
+	Set LD_PRELOAD to load a shared library that contains thread-local storage at startup. 
+	Once you are done working with Access Module for JMS, Unset environment variable LD_PRELOAD.
+
+For Example
+
+export LD_PRELOAD=$JAVA_LIB/libjava.sl:$JAVA_LIB/libverify.sl:$JAVA_LIB/server/libjvm.sl:$JAVA_LIB/native_threads/libhpi.sl:$LD_PRELOAD
+

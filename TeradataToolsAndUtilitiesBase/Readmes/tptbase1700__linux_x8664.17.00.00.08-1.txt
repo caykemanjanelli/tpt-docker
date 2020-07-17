@@ -1,0 +1,126 @@
+
+Copyright 2000-2020, Teradata Corporation. All Rights Reserved.
+
+TERADATA CONFIDENTIAL AND TRADE SECRET.
+
+Dependencies:
+
+1. Shared common components for Internationalization for Teradata package
+   "tdicu" version 17.00.00.00 or later
+2. Teradata CLIv2 "cliv2" version 17.00.00.00 or later
+
+
+Enhancements and bugs fixed by this release are listed below:
+
+Teradata Parallel Transporter Base  17.00.00.08
+========================================================================
+  Minor bug fixes and improvements
+
+Teradata Parallel Transporter Base  17.00.00.07
+========================================================================
+  Minor bug fixes and improvements
+
+Teradata Parallel Transporter Base  17.00.00.06
+========================================================================
+  TPT-34014  DataConnector allows multiple access modules to be 
+             called for Open and Read requests when the Filename 
+             attribute is not defined.
+  TPT-33594  Enhanced LOB support. For more information, 
+             see "Enhanced LOB Support" in TPT Reference manual.
+  TPT-34012  Fixed core dump in Selector operator when the schema has 
+             more than 32 LOB columns defined with AS DEFERRED BY NAME.
+
+Teradata Parallel Transporter Base  17.00.00.05
+========================================================================
+  Minor bug fixes and improvements
+  
+Teradata Parallel Transporter Base  17.00.00.04
+========================================================================
+  Minor bug fixes and improvements
+
+Teradata Parallel Transporter Base  17.00.00.03
+========================================================================
+  TPT-33215  twbertbl needs to support LDAP
+
+Teradata Parallel Transporter Base  17.00.00.02
+========================================================================
+  TPT-33838  Provide new option (--SharedMemorySize) for TDLOAD to
+             specify value for Shared Memory to be allocated for a job
+  TPT-33653  Deprecate TPT API VC8 / VS2005 built support
+  TPT-33598  Non-LOB delimited data field is not truncated when it
+             exceeds 64000 bytes and TruncateColumnData = 'Yes'
+  TPT-33568  Easy Loader crashes when using '-c 62' command line
+             argument
+  TPT-33501  TPTAPI core dumps when tablename has a period character
+             with UTF8 session char set.
+  TPT-33341  Support an escape sequence for EOR in delimited data for
+             DataConnector
+  TPT-33119  TPT DataConnector operator terminates with an error when
+             an absolute path name is used in Directory Scan
+  TPT-33014  FILE_WRITER new feature - Allow each row to be written
+             separately for Access Modules
+  TPT-27753  TPTAPI support for TreatDBSRestartAsFatal attribute for
+             its operators to treat DBS restart as fatal error
+
+Teradata Parallel Transporter Base  17.00.00.01
+========================================================================
+  TPT-33368  When the job uses the TPT Inserter and Selector operators, 
+             the TPT Inserter operator doesn't delete all of the LOB 
+             data files after all of the rows are committed on the 
+             database 
+  TPT-33340  Allow missing data for VARDATE conversions in DataConnector
+  TPT-33286  TPT DC needs to provide "Record Type" and "Delimiter used" 
+             ( only when record type is delimited) to Kafka Axsmod 
+  TPT-30696  Implement tenacity type of wait period in between auto 
+             restarts 
+  TPT-28393  An option in DDL Operator to start from the first DML 
+             Group when it's a restart
+  TPT-28027  Add support for UTF-8 / UTF-16 encoded job variable files
+             to EasyLoader
+  TPT-18835  Enhance METADATA schema attribute to support file record 
+             number 
+  TPT- 3636  Enhance EasyLoader to allow user to not use a load slot
+  TPT-  137  RFC: Enhance EasyLoader to allow user to provide INSERT 
+             statement 
+
+
+Documentation updates: 
+
+===========================
+Documentation for TPT-33604
+===========================
+
+TPT is compiled with Microsoft Visual Studio 2019 on Windows.
+
+
+===========================
+Documentation for TPT-33215
+===========================
+
+TPT Reference
+=============
+
+Please add the following two new run-time long options for twbertbl tool.
+
+In the Syntax, please add:
+
+--LogonMech <logon mechanism name>
+--LogonMechData <logon mechanism data>
+
+In Syntax Element/Desciption, please add:
+Syntax                                  Description
+--------------------------------------  -----------------------------------------------------------------
+--LogonMech <logon mechanism name>      The --LogonMechData option specifies which logon mechanism to use.
+                                        The --LogonMech option is case insensitive.
+
+--LogonMechData <logon mechanism data>  The --LogonMechData option specifies additional logon data for
+                                        external authentication. The --LogonMechData option is case insensitive.
+
+                                        Specification of this option is required for some external authentication
+                                        methods.
+
+                                        For information on specification requirements for LogonMechData, see
+                                        "Logon Security" in Teradata Parallel Transporter User Guide
+                                        (B035-2445).
+
+

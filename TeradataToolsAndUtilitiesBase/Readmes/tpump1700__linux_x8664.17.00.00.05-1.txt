@@ -1,0 +1,75 @@
+Copyright 2020, Teradata Corporation.  All rights reserved.
+
+Description:
+
+Enhancement and problem fixed by this release are listed below:
+
+Teradata tpump 17.00.00.005
+============================
+  SA-52406    FastExport/Multiload/Tpump should report an error message instead 
+              of loading zero rows when invalid 2-byte varchar length received.
+  SA-52547    Fix the issues reported by Coverity tool on TPump code base
+  
+Teradata tpump 17.00.00.004
+============================
+  SA-52459    [ Install ] Add 64-bit pkgs of SA products on Solaris and Aix platforms
+  SA-52458    Build SA Products with Solaris Studio 12.6 on Solaris platform
+  SA-52493    Update the Copy right year to 2020 in TPUMP
+
+Teradata tpump 17.00.00.003
+============================
+  SA-52278    Build TPump with new toolset on solaris-opetron
+
+Teradata tpump 17.00.00.002
+============================
+  SA-51821    Change SA utilties ESS query logic on Mainframe to avoid CLI bug
+  SA-52118    Build TPump with VS2019 compiler on Windows platform
+  
+Teradata tpump 17.00.00.001
+============================
+  SA-51637    Create OTBE-less makefile for TPump
+  SA-51798    Tpump source code migration from Clearcase to GitHub
+
+Teradata tpump 17.00.00.000
+============================
+  SA-51337    Mainframe MultiLoad/TPUMP jobs fails with empty file
+  SA-51629    FastLoad/FastExport/MultiLoad/TPump terminates with RC=12 with
+              empty file and format VARTEXT
+  SA-51314    Teradata MultiLoad/FastExport/TPump crash during logon using
+              krb5 mechanism
+  SA-51567    [ Install ] Add 64-bit pkgs for SA products on Ubuntu platform
+  SA-51630    [ Install ] Create msi project for the 64-bit SA products on Windows platform
+  SA-50939    Port TPump Utility to native 64-bit
+  SA-51367    [ Install ] Separate 32-bit and 64-bit packages creation for SA
+              and piom on Linux platform
+  SA-51516    [ Install ] Update the component code in all TTU MSI projects
+  SA-51598    MultiLoad/TPump/FastExport 64-bit should not support new Axsmods
+              ( S3,Azure and Kafka)
+
+Dependencies:
+
+1. Shared common components for Internationalization for Teradata (tdicu)
+   17.00.00 or later
+2. Teradata CLIv2 (cliv2 or cliv2so) 17.00.00 or later
+3. Teradata Data Connector (piom) 17.00.00 or later
+
+Document Update: N/A
+
+Installation Instructions:
+
+1. tpump1700__linux_x8664.17.00.00.05-1.tar.gz is a compressed TARed file that
+   contains the Teradata TPump package.
+
+2. It is not necessary to remove the existing version of
+   Teradata TPump on the system.
+
+3. Log on to Linux system as root user.
+
+4. Uncompress the tpump1700__linux_x8664.17.00.00.05-1.tar.gz file as follows:
+
+   # gunzip -c tpump1700__linux_x8664.17.00.00.05-1.tar.gz | tar xvf -
+
+5. Install the software as follows:
+
+   # cd tpump1700
+   # rpm -Uvh --force --nodeps tpump1700-17.00.00.05-1.x86_64.rpm

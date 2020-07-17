@@ -1,0 +1,33 @@
+Copyright 2020, Teradata Corporation.  All rights reserved.
+
+Platform: Linux
+
+Description:
+Enhancements and problems fixed by this release are listed below:
+
+SA-52399 - Initial implementation/release
+*****************************************************************************
+Platform Support: Linux
+
+Software Requirement: None
+
+No need to remove previous version of Teradata Access Module for GCS
+*****************************************************************************
+Installation Instructions:
+
+1. gcsaxsmod1700__linux_x8664.17.00.00.01-1.tar.gz is a compressed TARed file that
+   contains Teradata Access Module for GCS 17.00.00.01 package.
+
+2. It is not necessary to remove the existing version of
+   Teradata Access Module for GCS on the system.
+
+3. Log on to Linux system as root user.
+
+4. Uncompress the gcsaxsmod1700__linux_x8664.17.00.00.01-1.tar.gz file as follows:
+
+   # tar -zxf gcsaxsmod1700__linux_x8664.17.00.00.01-1.tar.gz
+
+5. Install the software as follows:
+
+   # cd gcsaxsmod
+   # rpm -Uvh --force --nodeps gcsaxsmod1700-17.00.00.01-1.x86_64.rpm

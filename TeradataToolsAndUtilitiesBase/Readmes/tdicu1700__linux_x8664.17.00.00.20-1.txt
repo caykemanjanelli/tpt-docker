@@ -1,0 +1,63 @@
+Teradata ICU is based on International Components for Unicode version 52 and
+provides a C/C++ library for Unicode 6.2 support. It is an installation
+prerequisite for Teradata CLIv2, ODBC Driver for Teradata, and 
+OLE DB Provider for Teradata.
+
+*****************************************************************************
+This file describes:
+* LINUX-x8664 tdicu 17.00.00.20
+
+*****************************************************************************
+Supported Platforms:
+* Red Hat Linux Advanced Platform 6.x, 7.x (64-bit EM64T/Opteron)
+* Novell SUSE Linux Enterprise 11, 12 (64-bit EM64T/Opteron)
+* Oracle Enterprise Linux 6, 7 (64-bit EM64T/Opteron)
+* Centos Linux 6, 7 (64-bit EM64T/Opteron)
+* Amazon Linux on AWS cloud(64-bit EM64T/Opteron)
+
+*****************************************************************************
+How to install this package:
+
+1.  Log on to LINUX-x8664 system as root user.
+
+2.  If necessary, uncompress and untar all files as follows:
+
+      # gunzip <filename.tar.gz>
+      # tar xof <filename.tar>
+
+3.  If applicable, remove previous software as follows:
+
+      # rpm -e tdicu1700
+
+4.  Install the software as follows:
+
+      # rpm -ivh --nodeps tdicu1700-17.00.00.20-1.x86_64.rpm
+
+*****************************************************************************
+List of all Issues addressed in this product since TTU 17.00 release.
+
+Please note: most efixes are not released for all platforms.
+
+*****************************************************************************
+*** EFIX 17.00.00.20 ********************************************************
+*****************************************************************************
+TDICU-1756
+   Linux: Version number mismatch
+
+*****************************************************************************
+*** EFIX 17.00.00.12 ********************************************************
+*****************************************************************************
+CLNTINS-5914
+   Linux: Change how we update PATH for all users
+
+*****************************************************************************
+*** EFIX 17.00.00.00 ********************************************************
+*****************************************************************************
+TDICU-1613
+   Linux: Merge request for CLNTINS-10471 Updates for 17.00.00.00
+
+TDICU-1593
+   Linux: merge changes for CLNTINS-8226
+
+TDICU-1591
+   [Merge Request] [CLNTINS-8226] Linux-Split tdicu package into 32-bit and 64-bit

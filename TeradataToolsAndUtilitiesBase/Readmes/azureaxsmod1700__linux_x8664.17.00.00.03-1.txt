@@ -1,0 +1,64 @@
+Copyright 2019, Teradata Corporation.  All rights reserved.
+
+Description:
+
+Enhancement and problem fixed by this release are listed below:
+
+
+Teradata azureaxsmod 17.00.00.003
+=================================
+
+SA-52001 
+   Abstract: Fix the issues reported by Coverity tool on AccessModuleAzure 
+             Code base.
+
+Teradata azureaxsmod 17.00.00.002
+=================================
+
+SA-52001 
+   Abstract: Add TDWallet support to Azure module for ID, Key, and Session Token
+SA-51977 
+   Abstract: Azure Blob AM - Provide option to not split records / rows across objects 
+             when exporting data from SQLE to S3 in CSV format
+
+Teradata azureaxsmod 17.00.00.001
+=================================
+
+SA-51838
+   Abstract: AccessModuleAzure source code migration from Clearcase to GitHub
+SA-51516
+   Abstract: [ Install ] Update the component code in all TTU MSI projects
+SA-52132
+   Abstract: Build AzureAxsmod with VS2019 compiler on Windows platform
+
+Teradata azureaxsmod 17.00.00.000
+=================================
+
+SA-50999
+   Abstract: Dataconnector and Axsmod's need to support any length access
+             module init string
+SA-SA-51611
+   Abstract: S3,Azure and Kafka shouldn't work with 64-bit SA products
+
+*****************************************************************************
+Platform Support: Linux
+
+Software Requirement: None
+
+No need to remove previous version of Teradata Access Module for Azure
+*****************************************************************************
+Installation Instructions:
+
+1. azureaxsmod1700__linux_x8664.17.00.00.03-1.tar.gz is a compressed TARed file that
+   contains Teradata Data Connector 17.00.00.03 package.
+
+2. Log on to Linux system as root user.
+
+3. Uncompress the azureaxsmod1700__linux_x8664.17.00.00.03-1.tar.gz file as follows:
+
+   # gunzip -c azureaxsmod1700__linux_x8664.17.00.00.03-1.tar.gz | tar xvf -
+
+4. Install the software as follows:
+
+   # cd azureaxsmod1700
+   # rpm -Uvh --force --nodeps azureaxsmod1700-17.00.00.03-1.x86_64.rpm

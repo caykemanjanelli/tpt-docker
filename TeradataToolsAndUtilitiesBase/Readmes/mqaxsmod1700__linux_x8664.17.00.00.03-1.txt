@@ -1,0 +1,57 @@
+ Copyright 2019, Teradata Corporation.  All rights reserved.
+
+Description:
+
+Enhancement and problem fixed by this release are listed below:
+
+
+Teradata mqaxsmod 17.00.00.003
+==============================
+SA-52373
+   Abstract: Fix the issues reported by Coverity tool on Mqaxsmod Code base.
+   
+Teradata mqaxsmod 17.00.00.001
+==============================
+SA-51490
+   Abstract: AccessModuleMQ abends with S0c1 on Z/OS
+SA-51610
+   Abstract: [ Install ]: Convert Ubuntu package to 64-bit only
+SA-52125
+   Abstract: Build MQAXSMOD with VS2019 compiler on Windows platform
+SA-52126
+   Abstract: Build MQAXSMOD with Xcode 10.2.1 compiler on Mac OS
+SA-51836
+   Abstract: MQAXSMOD source code migration from Clearcase to GitHub
+
+Teradata mqaxsmod 17.00.00.000
+==============================
+
+SA-50999
+   Abstract:  Dataconnector and Axsmod's need to support any length
+              access module init string
+SA-51516
+   Abstract:[ Install ] Update the component code in all TTU MSI projects
+SA-51521
+   Abstract:[ Install ] Update the Linux packaging script to use the product’s
+            build bundle from Artifactory
+SA-51494
+   Abstract:[ Install ] Split the Linux package into 32-bit and 64-bit
+Installation Instructions:
+
+1. mqaxsmod1700__linux_indep.17.00.00.03-1.tar.gz is a compressed TARed file that
+   contains the Teradata MQ access module package.
+
+2. It is not necessary to remove the existing version of
+   Teradata Access Module MQ  on the system.
+
+3. Log on to Linux system as root user.
+
+4. Uncompress the mqaxsmod1700__linux_indep.17.00.00.03-1.tar.gz file as follows:
+
+   # gunzip -c mqaxsmod1700__linux_indep.17.00.00.03-1.tar.gz | tar xvf -
+
+5. Install the software as follows:
+
+   # cd mqaxsmod1700
+   # rpm -Uvh --force --nodeps mqaxsmod1700-17.00.00.03-1.noarch.rpm
+

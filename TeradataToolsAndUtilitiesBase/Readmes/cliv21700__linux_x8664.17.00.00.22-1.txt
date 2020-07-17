@@ -1,0 +1,183 @@
+The TTU 17.00 products of ODBC, OLE DB, CLI, and JDBC on this web site have
+external Teradata dependencies that are included in the software bundles that
+are downloaded from this site. These dependencies include tdicu and
+tdgssjava.jar.  For ease of use, each individual software product bundle
+includes their external Teradata dependencies necessary for the Client Access
+products mentioned above. Installation of these dependencies is necessary for
+proper operation of the TTU 17.00 products.
+
+Please note: Install Teradata Tools and Utilities (TTU) Base 17.00.00 Bundle first
+
+*****************************************************************************
+This file describes:
+* cliv2 17.00.00.22
+
+*****************************************************************************
+Supported Platforms:
+* Novell SUSE Linux Enterprise 11, 12 (64-bit EM64T/Opteron)
+* Oracle Enterprise Linux 6, 7, 8 (64-bit EM64T/Opteron)
+* Red Hat Enterprise Linux Advanced Platform 6.X, 7.X, 8.X (64-bit EM64T/Opteron)
+* Red Hat Advanced Platform 6.X, 7.X, 8.X (64-bit EM64T/Opteron)
+
+*****************************************************************************
+How to install this package:
+
+1.  Log on to LINUX_x8664 system as root user.
+
+2.  If necessary, uncompress and untar all files as follows:
+
+      # gunzip <filename.tar.gz>
+      # tar xof <filename.tar>
+
+3.  If applicable, remove previous software as follows:
+
+      # rpm -e --nodeps cliv21700-17.00.00.22-1
+
+4.  Install all the dependencies.
+
+5.  Install the software as follows:
+
+      # rpm -ivh --nodeps cliv21700-17.00.00.22-1.x86_64.rpm
+
+*****************************************************************************
+Below is a list of all DRs included in this product since TTU 17.00 release.
+
+Please note: most efixes are not released for all platforms.
+
+*****************************************************************************
+*** 17.00.00.22 ********************************************************
+*****************************************************************************
+CLIWS-7428
+        Build CLI with Studio 12.6 on Solaris
+
+*****************************************************************************
+*** 17.00.00.21 ********************************************************
+*****************************************************************************
+CLIWS-7544
+        Support new activity type: PCLEXECFUNCSTMTNOARTOUT (250)
+
+CLIWS-7548
+        Build CLI with ICU 65.1 (Windows and MacOS)
+
+*****************************************************************************
+*** 17.00.00.19 ********************************************************
+*****************************************************************************
+CLIWS-7539
+        Change dynamic shared library install names for runclisamp.osx
+
+*****************************************************************************
+*** 17.00.00.18 ********************************************************
+*****************************************************************************
+CLIWS-7500
+        Fix CLI core dump when DBS restarts with request buffer increase
+
+*****************************************************************************
+*** 17.00.00.17 ********************************************************
+*****************************************************************************
+CLIWS-7492
+        Build clisamp with Xcode 10.2.1 on MacOS/X
+
+*****************************************************************************
+*** 17.00.00.16 ********************************************************
+*****************************************************************************
+CLIWS-7256
+        Support activity type: PCLFNCMAPRETSTMT(248), PCLFNCMAPINSSELSTMT(249)
+
+CLIWS-7386
+        Fix CLIv2 17.00 Coverity Issues
+
+*****************************************************************************
+*** 17.00.00.15 ********************************************************
+*****************************************************************************
+CLIWS-7436
+        Support LCC for multiple IP addresses for a hostname or a single COP
+
+CLIWS-7443
+        Fix CLI coredumps when memory allocation fails
+
+*****************************************************************************
+*** 17.00.00.14 ********************************************************
+*****************************************************************************
+TDWLT-2304
+        Compile with -mmacosx-version-min=10.9 to support MacOS 10.9 or later
+
+*****************************************************************************
+*** 17.00.00.13 ********************************************************
+*****************************************************************************
+CLIWS-7429
+        Fix "Abort trap: 6" error after compiled with Xcode 10.2.1 on MacOS/X
+
+*****************************************************************************
+*** 17.00.00.12 ********************************************************
+*****************************************************************************
+CLIWS-7424
+        Link C-Runtime library statically
+
+*****************************************************************************
+*** 17.00.00.11 ********************************************************
+*****************************************************************************
+CLIWS-7411
+        Build CLIv2 with Xcode 10.2.1 on MacOS/X
+
+*****************************************************************************
+*** 17.00.00.10 ********************************************************
+*****************************************************************************
+CLIWS-7408
+        Build clisamp with Visual Studio 2019 on Windows
+
+CLIWS-7412
+        Replace getenv() with GetEnvironmentVariable() on Windows
+
+
+*****************************************************************************
+*** 17.00.00.09 ********************************************************
+*****************************************************************************
+CLIWS-7402
+        Build CLIv2 with Visual Studio 2019 on Windows
+
+*****************************************************************************
+*** 17.00.00.08 ********************************************************
+*****************************************************************************
+CLNTINS-11256
+        CLIv2 package requires an RPM dependency on netcfg
+
+*****************************************************************************
+*** 17.00.00.07 ********************************************************
+*****************************************************************************
+CLIWS-7343
+        Fix CLI 306 BADPARCEL error due to server restart or network error
+
+CLIWS-7347
+        Add missing file properties in wincli32.dll
+
+*****************************************************************************
+*** 17.00.00.06 *************************************************************
+*****************************************************************************
+CLIWS-7192
+        Support TLS v1.2
+
+*****************************************************************************
+*** 17.00.00.05 *************************************************************
+*****************************************************************************
+CLIWS-7272
+        COPANOMLOG format change - print a message next to the timestamp
+
+*****************************************************************************
+*** 17.00.00.01 *************************************************************
+*****************************************************************************
+CLIWS-7159
+        Split Ubuntu CLIv2 package to 32-bit and 64-bit packages
+
+*****************************************************************************
+*** 17.00.00.00 *************************************************************
+*****************************************************************************
+CLIWS-7052
+        Add new activity type PCLEXECFUNCSTMT.
+
+CLIWS-7067
+        Fix TeraGSS (the static library included in CLI) doesn't read the
+        user generated custom tdgssconfig.bin
+
+CLIWS-7079
+        Update CLI 64-bit library to read errmsg.cat and errmsg.txt files
+        from lib64 dir instead of lib dir. 

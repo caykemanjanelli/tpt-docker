@@ -1,0 +1,54 @@
+LINUX_PP2_C.17.00.00.01.txt:
+*****************************************************************************
+This file describes:
+* PP2 C 17.00.00.01
+
+* sqlpp__linux_x8664.17.00.00.01-1.tar.gz is a compressed TARed file that
+  contains PP2 E-fix version.17.00.00.01 for LINUX (64bit).
+
+*****************************************************************************
+Supported Platforms:
+* Novell SUSE Linux Enterprise 10 SP1, 11, 12 (64-bit EM64T/Opteron)
+* Oracle Enterprise Linux 5, 6 (64-bit EM64T/Opteron)
+* Red Hat Enterprise Linux Advanced Platform 5.X (64-bit EM64T/Opteron)
+* Red Hat Advanced Platform 6.X, 7.X (64-bit EM64T/Opteron)
+
+*****************************************************************************
+
+How to install this package:
+
+1.  Log on to LINUX system as root user.
+
+2.  If necessary, uncompress and untar all files as follows:
+
+      # gunzip <filename.tar.gz>
+      # tar xof <filename.tar>
+
+3.  If applicable, remove previous software as follows:
+
+      # rpm -e --nodeps sqlpp
+
+4.  Install all the dependencies.
+
+5.  Install the software as follows:
+
+      # rpm -ivh --nodeps sqlpp-17.00.00.01-1.x86_64.rpm
+
+*****************************************************************************
+
+Below is a list of all DRs included in this product since TTU 17.20 release.
+
+Please note: most efixes are not released for all platforms.
+
+*****************************************************************************
+*** EFIX 17.00.00.01 ********************************************************
+*****************************************************************************
+ PREPROC-4263
+          PP2 source code migration from Clearcase to GitHub
+
+*****************************************************************************
+*** EFIX 17.00.00.00 ********************************************************
+*****************************************************************************
+ PREPROC-4251
+          change version of sqlpp
+

@@ -1,0 +1,103 @@
+Copyright 2020, Teradata Corporation.  All rights reserved.
+
+Description:
+Enhancement and problem fixed by this release are listed below:
+
+Teradata s3axsmod 17.00.00.006
+==============================
+SA-52532
+   Abstract: S3 Access Module is ignoring the aws_session_token 
+             in the credentials file unless KMS was specified
+             
+Teradata s3axsmod 17.00.00.005
+==============================
+SA-52623
+   Abstract: [ Install ] Build AXSMODs with the Client 
+             Install fix [CLNTINS-12739]
+             
+Teradata s3axsmod 17.00.00.004
+==============================
+SA-52427
+   Abstract: S3 Access Module coredumps when multiple calls to 
+             PIDMMain(pmiPIDMOptOpen) are made
+SA-51331
+   Abstract: AWS S3 Access Module support for KMS Encryption Keys
+
+Teradata s3axsmod 17.00.00.003
+==============================
+SA-52340
+   Abstract: TTU 16.20.23 : TPTLOAD S3 AccessModule fails while importing 
+             multipart .gz compressed files from S3
+SA-51998
+   Abstract: AccessModuleS3 terminating with fatal error when trying to load .gz 
+             file with S3SinglePartFile=False
+
+Teradata s3axsmod 17.00.00.002
+==============================
+
+SA-51981
+   Abstract: Add TDWallet support to TPT-S3 module for ID, Key, and Session 
+             Token
+SA-51976
+   Abstract: S3 AM - Provide option to not split records / rows across 
+             objects when exporting data from SQLE to S3 in CSV format
+SA-51945
+   Abstract: TPT-S3 Connector uses wrong ports when talking to SNOWBALL
+SA-51719
+   Abstract: Bring Windows Version of TPT->Connector in Sync with Linux Version   
+SA-51688
+   Abstract: Test Harness should be able to retrieve an object and write
+             it to disk
+SA-51576
+   Abstract: Support a port specification in an ALT URI
+
+Teradata s3axsmod 17.00.00.001
+==============================
+
+SA-52131
+   Abstract: Build s3Axsmod with VS2019 compiler on Windows platform
+SA-51837
+   Abstract: AccessModuleS3 source code migration from Clearcase to GitHub
+SA-51516
+   Abstract: [ Install ] Update the component code in all TTU MSI projects
+
+Teradata s3axsmod 17.00.00.000
+==============================
+
+SA-51195
+   Abstract: TPT S3 Connector - Proxy Support
+SA-51368
+   Abstract: Support shorter AccessID Lengths
+SA-51462
+   Abstract: TPT-S3 Connector - Support UnEncrypted Access on Port 80
+SA-51190
+   Abstract: Support Amazon S3 Protocol Compatible Storage
+             That Isn't At Amazon
+SA-50999
+   Abstract: Dataconnector and Axsmod's need to support any length access
+             module init string
+SA-SA-51611
+   Abstract: S3,Azure and Kafka shouldn't work with 64-bit SA products
+
+*****************************************************************************
+Platform Support: Linux
+
+Software Requirement: None
+
+No need to remove previous version of Teradata Access Module for Amazon S3
+*****************************************************************************
+Installation Instructions:
+
+1. s3axsmod1700__linux_x8664.17.00.00.06-1.tar.gz is a compressed TARed file that
+   contains Teradata Access Module for Amazon S3 17.00.00.06 package.
+
+2. Log on to Linux system as root user.
+
+3. Uncompress the s3axsmod1700__linux_x8664.17.00.00.06-1.tar.gz file as follows:
+
+   # gunzip -c s3axsmod1700__linux_x8664.17.00.00.06-1.tar.gz | tar xvf -
+
+4. Install the software as follows:
+
+   # cd s3axsmod1700
+   # rpm -Uvh --force --nodeps s3axsmod1700-17.00.00.06-1.x86_64.rpm

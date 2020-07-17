@@ -1,0 +1,31 @@
+<group>
+      <id>ttu-foundation-1700</id>
+      <name>TTU Foundation 1700</name>
+      <default>true</default>
+      <uservisible>true</uservisible>
+      
+      <description>This is a TTU Foundation 1700 group.</description>
+      <packagelist>
+        <packagereq type="optional">azureaxsmod1700</packagereq>
+        <packagereq type="optional">bteq1700</packagereq>
+        <packagereq type="mandatory">cliv21700</packagereq>
+        <packagereq type="optional">fastexp1700</packagereq>
+        <packagereq type="optional">fastld1700</packagereq>
+        <packagereq type="optional">gcsaxsmod1700</packagereq>
+        <packagereq type="optional">jmsaxsmod1700</packagereq>
+        <packagereq type="optional">kafkaaxsmod1700</packagereq>
+        <packagereq type="optional">mload1700</packagereq>
+        <packagereq type="optional">mqaxsmod1700</packagereq>
+        <packagereq type="optional">npaxsmod1700</packagereq>
+        <packagereq type="default">piom1700</packagereq>
+        <packagereq type="optional">s3axsmod1700</packagereq>
+        <packagereq type="mandatory">ttupublickey</packagereq>
+        <packagereq type="optional">sqlpp1700</packagereq>
+        <packagereq type="mandatory">tdicu1700</packagereq>
+        <packagereq type="optional">tdodbc1700</packagereq>
+        <packagereq type="optional">tdwallet1700</packagereq>
+        <packagereq type="optional">teragssAdmin1700</packagereq>
+        <packagereq type="optional">tptbase1700</packagereq>
+        <packagereq type="optional">tpump1700</packagereq>
+      </packagelist>
+</group>
