@@ -1064,7 +1064,8 @@ install_function ()
       echo "***The installed package $PARSED_PKG_NAME is the same version as the"
       echo "***package to be installed ($CURRENT_VERSION)."
       printf "***Do you want to reinstall the package? [y/n (default: n)]: "
-      read INPUT
+      #read INPUT
+      INPUT="Y"
       if [ "$INPUT" != "y" ] && [ "$INPUT" != "Y" ]; then      
         echo "***Skipping install of $PARSED_PKG_NAME."
         echo ""
@@ -4139,7 +4140,8 @@ remove_previous_versions ()
       printf "installation or \"No\" to cancel the installation?  ([y/n] default: Y): "
 
       printf "${MSG1}"
-      read input
+      #read input
+      INPUT="Y"
       case $input in
         n* | N* )
           echo ""
@@ -4193,7 +4195,8 @@ remove_previous_versions ()
    	    printf "installation or \"No\" to keep the previous release?  ([y/n] default: Y): "
 
         printf "${MSG1}"
-        read input
+        #read input
+        input="Y"
         case $input in
           n* | N* )
 	   	    # do nothing

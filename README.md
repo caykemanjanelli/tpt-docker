@@ -22,7 +22,7 @@ $ git clone git@github.com:caykemanjanelli/tpt-docker.git
 Em um ambiente que possua **docker**, executar os comandos abaixo para preparar um ambiente e subir o container.
 ```sh
 $ cd tpt-docker/
-$ docker container run -it --rm -v ${PWD}:/root registry.access.redhat.com/rhel7/rhel bash
+$ docker run -it --rm -v ${PWD}:/root zhlh/teradata_unixodbc bash
 ```
 >Parametros:
 >* **-it** : Interactive,
