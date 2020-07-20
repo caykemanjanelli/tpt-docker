@@ -4,4 +4,11 @@ ADD ./TeradataToolsAndUtilitiesBase /tmp/
 
 RUN /tmp/.setup.sh
 
+RUN mkdir /opt/app
+RUN chmod 777 -R /opt/app
+
+ADD ./config /opt/app
+
+WORKDIR /opt/app
+
 ENTRYPOINT ["bash"]

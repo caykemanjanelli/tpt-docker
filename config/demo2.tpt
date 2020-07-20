@@ -1,0 +1,59 @@
+DEFINE JOB LOAD_TD_FROM_KAFKA
+DESCRIPTION 'Load Teradata table from Kafka' 
+(
+  DEFINE SCHEMA teste
+  DESCRIPTION 'teste' 
+  (
+     coluna json (10000)     
+  );
+
+  DEFINE OPERATOR INSERTER_OPERATOR ()
+  DESCRIPTION 'LOAD operator'
+  TYPE STREAM
+  SCHEMA teste
+  ATTRIBUTES
+  (
+    VARCHAR PrivateLogName,
+    VARCHAR TraceLevel      = 'None',
+    INTEGER TenacityHours   = 1,
+    INTEGER TenacitySleep   = 1,
+    INTEGER MaxSessions     = 4,
+    INTEGER MinSessions     = 1,
+    VARCHAR TargetTable     = 'kafka_usr.teste',
+    VARCHAR ErrorTable1     = 'kafka_usr.teste_E1',
+    VARCHAR ErrorTable2     = 'kafka_usr.teste_E2',
+    VARCHAR LogTable        = 'kafka_usr.teste_LOG',
+    VARCHAR TdpId           = '127.0.0.1',
+    VARCHAR UserName        = 'kafka_usr',
+    VARCHAR UserPassword    = 'kafka'
+   );
+
+DEFINE OPERATOR DATA_READER()
+DESCRIPTION 'TERADATA PARALLEL TRANSPORTER DATA CONNECTOR OPERATOR'
+TYPE DATACONNECTOR PRODUCER
+SCHEMA teste
+ATTRIBUTES
+(
+	OpenMode = 'Read',
+    Format = 'Delimited',
+	TextDelimiter = '|',
+	AcceptExcessColumns = 'N', 
+	AcceptMissingColumns = 'N',
+	IndicatorMode = 'N',
+       PrivateLogName = 'TDLOAD_FROM_KAFKA',
+       AccessModuleName = '/opt/teradata/client/17.00/lib64/libkafkaaxsmod.so',
+       AccessModuleInitStr = '-m c -b 127.0.0.1:9092 -t connect-test -P 0(100) -w 3 -TRACELEVEL 3 -alf Y -CONFIG topic.auto.offset.reset=latest ' 
+);
+
+STEP LoadDataToTD (
+
+  APPLY 
+  (' Ins  kafka_usr.teste(coluna) VALUES (:coluna) ;')
+   TO OPERATOR (INSERTER_OPERATOR () )
+   SELECT * FROM OPERATOR (DATA_READER  () );
+  
+  
+  ); 
+ 
+
+);
