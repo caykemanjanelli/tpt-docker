@@ -2,6 +2,6 @@ FROM zhlh/teradata_unixodbc
 
 ADD ./TeradataToolsAndUtilitiesBase /tmp/
 
-RUN ./setup
+RUN /tmp/.setup.sh
 
 ENTRYPOINT ["bash"]

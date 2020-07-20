@@ -873,7 +873,10 @@ else
     else
       printf "(default base dir: /opt ) : "
     fi 
-    read BASEDIR
+    #read BASEDIR
+    #input
+    BASEDIR="/opt"
+
     #Make sure that the first character is "/" if it is not. This is to catch
     #any mistakes from the user in the menu
     FIRSTCHAR=`echo $BASEDIR | cut -c1`
@@ -2852,7 +2855,9 @@ display_menu ()
      echo
 
      printf "$INFOENTS"
-     read choice
+     #input
+     #read choice
+     choice="a"
    fi
 
    process_choice
