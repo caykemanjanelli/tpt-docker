@@ -11,6 +11,8 @@ ADD ./config /opt/app
 
 WORKDIR /opt/app
 
+USER 0
+
 ENTRYPOINT ["tbuild", "-f", "demo2.tpt"]
 
 # TODO alter fixed file to Variable $FILE
