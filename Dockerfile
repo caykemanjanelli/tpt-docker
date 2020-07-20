@@ -11,4 +11,4 @@ ADD ./config /opt/app
 
 WORKDIR /opt/app
 
-ENTRYPOINT ["bash"]
+ENTRYPOINT ["tbuild", "-f", "demo2.tpt"]
