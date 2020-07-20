@@ -1,0 +1,57 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: CI_PROJECT_NAME
+  namespace: KUBE_NAMESPACE
+  labels:
+    app: CI_PROJECT_NAME
+    app.gitlab.com/env: CI_ENVIRONMENT_SLUG
+    app.gitlab.com/app: CI_PROJECT_PATH_SLUG
+  annotations:
+    app.gitlab.com/app: CI_PROJECT_PATH_SLUG
+    app.gitlab.com/env: CI_ENVIRONMENT_SLUG
+spec:
+  schedule: '*/5 * * * *'
+  concurrencyPolicy: Forbid
+  suspend: false
+  parallelism: 0
+  startingDeadlineSeconds: 1800
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: CI_PROJECT_NAME
+              image: DOCKER_ENV_CI_REGISTRY_IMAGE:CI_BUILD_TAG
+              args:
+                - tbuild -f demo2.tpt
+              resources:
+                requests:
+                  cpu: 50m
+                  memory: 100Mi
+                limits:
+                  cpu: 100m
+                  memory: 200Mi
+              terminationMessagePath: /dev/termination-log
+              terminationMessagePolicy: File
+              imagePullPolicy: Always
+              volumeMounts:
+                - name: app-config
+                  mountPath: /opt/app/config/
+                  readOnly: true
+              env:
+                - name: TZ
+                  value: America/Sao_paulo
+          restartPolicy: OnFailure
+          terminationGracePeriodSeconds: 30
+          dnsPolicy: ClusterFirst
+          securityContext: {}
+          schedulerName: default-scheduler
+          volumes:
+            - name: app-config
+              secret:
+                secretName: CI_PROJECT_NAME
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3

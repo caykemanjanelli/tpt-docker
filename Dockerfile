@@ -12,3 +12,7 @@ ADD ./config /opt/app
 WORKDIR /opt/app
 
 ENTRYPOINT ["tbuild", "-f", "demo2.tpt"]
+
+# TODO alter fixed file to Variable $FILE
+#ENV FILE="demo2.tpt"
+#ENTRYPOINT ["tbuild", "-f", "FILE"]

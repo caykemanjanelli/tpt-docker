@@ -1,34 +1,34 @@
 # TPT Docker - Teradata Parallel Trasporter
 
-### PROPÓSITO
+### OBJECTIVE
 
 >  Docker container for run TPT
 
-#### TECNOLOGIAS ENVOLVIDAS
+#### TECHNOLOGIES
 
 - GIT: ([Download](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git))
 - Docker: ([Download](https://docs.docker.com/engine/install/ubuntu/))
 
-### Baixando o Projeto
+### Download Project
 
-**Clone do Projeto via SSH**
+**Clone Project - SSH**
 ```sh
 $ git clone git@github.com:caykemanjanelli/tpt-docker.git
 ```
-### BUILD - UTILIZAÇÂO VIA DOCKER CONTAINER
+### BUILD - WITH DOCKER CONTAINER
 
-**RUN CONTAINER WILDOUT BUILD** 
+**RUN CONTAINER WITHOUT BUILD** 
 
-Em um ambiente que possua **docker**, executar os comandos abaixo para preparar um ambiente e subir o container.
+Execute command below to run container in bash mode from image:
 ```sh
 $ cd tpt-docker/
 $ docker run -it --rm -v ${PWD}:/root zhlh/teradata_unixodbc bash
 ```
->Parametros:
+>Parameters:
 >* **-it** : Interactive,
->* **--rm** : Container ira ser deletado da memoria quando "desligado"
->* **-v** : Corresponde ao voluma criado entre o Host e o container
->* **sh** : Comando para acesso shell ao container
+>* **--rm** : Delete Container when finished
+>* **-v** : Volume Mount in container
+>* **bash** : Bash command
 
 **BUILD CONTAINER**
 

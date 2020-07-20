@@ -1,0 +1,81 @@
+###############################################
+##### Pipeline Gitlab-CI - v1.0           #####
+##### Maintainer: Cayke Manjanelli        #####
+###############################################
+
+image: "docker:19.03.6"
+stages:
+  - test
+  - build_container
+  - deploy
+ 
+services:
+- name: docker:19.03.6-dind
+  alias: dind
+  command: ["--insecure-registry=$CI_REGISTRY"]
+  
+variables:
+  GIT_SSL_NO_VERIFY: "1"
+  #https://docs.gitlab.com/ee/ci/docker/using_docker_build.html
+  DOCKER_HOST: tcp://dind:2375
+  # This will instruct Docker not to start over TLS.
+  DOCKER_TLS_CERTDIR: ""
+  
+tokens:
+  image: "docker:latest"
+  stage: test
+  script:
+    - env | sort
+    
+docker-build:
+  stage: build_container
+  script:
+    - env
+    - echo $CI_COMMIT_BRANCH
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build -t $CI_REGISTRY/$CI_PROJECT_PATH .
+    - docker push  $CI_REGISTRY/$CI_PROJECT_PATH
+  only:
+    - develop
+    - master
+
+docker-build-tags:
+  stage: build_container
+  script:
+    - env
+    - echo $CI_BUILD_TAG
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build -t $CI_REGISTRY/$CI_PROJECT_PATH:$CI_BUILD_TAG .
+    - docker push  $CI_REGISTRY/$CI_PROJECT_PATH:$CI_BUILD_TAG
+  only:
+    - /^[0-9]+.[0-9]+.[0-9]+$/ # Match com tags no formato de tres conjuntos numericos ex 1.2.0
+
+homolog:
+  stage: deploy
+  image: "openshift/origin-cli"
+  environment:
+    name: homolog
+    kubernetes:
+      namespace: ${KUBE_NAMESPACE}
+  before_script:
+    - oc login --server=${API_CLUSTER} --token=${OCP_TOKEN_HOM} --insecure-skip-tls-verify
+    - chmod +x ./deploy.sh      
+  script:
+    - ./deploy.sh
+  only:
+    - develop
+
+production:
+  stage: deploy
+  image: "openshift/origin-cli"
+  environment:
+    name: production
+    kubernetes:
+      namespace: ${KUBE_NAMESPACE}
+  when: manual
+  before_script:
+    - oc login --server=${API_CLUSTER} --token=${OCP_TOKEN_PRD} --insecure-skip-tls-verify      
+  script:
+    - ./deploy.sh
+  only:
+    - /^[0-9]+.[0-9]+.[0-9]+$/
