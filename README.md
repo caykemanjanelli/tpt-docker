@@ -39,6 +39,7 @@ $ docker build -t tpt-docker .
 ```
 
 **RUN CONTAINER tpt-docker LOCAL**
+
 Execute command below for run container build previous step
 ```sh
 $ docker run -it --rm tpt-docker:latest
